@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Construcción y remodelación: casas, ampliaciones, cocinas, baños, fachadas e impermeabilización. Cotización gratis.">
+<title>Obra Firme Construcción</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: obra en planos — bandas de concreto, cinta de precaución como único acento, medidas en mono */
+:root{
+  --bg:#ECEAE5; --surface:#F7F6F3; --ink:#1B1C1E; --muted:#5E5F5C; --line:#CFCBC2;
+  --accent:#E9A21A; --accent-ink:#1B1C1E; --band:#1F2123; --band-fg:#EFEDE8;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#151617; --surface:#1E2022; --ink:#ECEAE5; --muted:#A3A39E; --line:#34363A;
+  --accent:#F0AE2A; --accent-ink:#151617; --band:#0E0F10; --band-fg:#ECEAE5; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#151617; --surface:#1E2022; --ink:#ECEAE5; --muted:#A3A39E; --line:#34363A;
+  --accent:#F0AE2A; --accent-ink:#151617; --band:#0E0F10; --band-fg:#ECEAE5; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0}
+img{max-width:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance}
+h2{font-size:clamp(2.2rem,6vw,3.4rem);font-weight:900}
+p{margin:0}
+a{color:inherit}
+.label{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tape{height:14px;background:repeating-linear-gradient(-45deg,var(--accent) 0 18px,var(--band) 18px 36px)}
+
+/* header */
+header{padding-block:18px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-family:var(--display);font-weight:900;font-size:1.6rem;text-transform:uppercase;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.brand i{width:22px;height:22px;background:var(--accent);display:inline-block;clip-path:polygon(0 100%,50% 0,100% 100%)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 1rem var(--body);padding:13px 20px;border:2px solid var(--ink);background:transparent;color:var(--ink);text-decoration:none;cursor:pointer;border-radius:2px}
+.btn.solid{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn.sm{padding:9px 14px;font-size:.92rem}
+
+/* hero */
+.hero{padding-block:28px 56px}
+.hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(3.4rem,12vw,7.4rem);font-weight:900}
+.hero h1 span{color:var(--accent)}
+.hero .lead{margin-top:20px;font-size:1.15rem;max-width:34ch;color:var(--muted)}
+.hero .cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+.plan{border:2px solid var(--ink);background:var(--surface);padding:18px;position:relative}
+.plan svg{width:100%;height:auto;display:block}
+.plan .label{position:absolute;top:-10px;left:14px;background:var(--bg);padding:0 6px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:14px;border-top:1px solid var(--line)}
+.facts div{padding:10px 8px 0;min-width:0}
+.facts b{font-family:var(--display);font-size:1.7rem;display:block;font-variant-numeric:tabular-nums}
+
+/* services */
+section{padding-block:64px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.sec-head p{max-width:42ch;color:var(--muted)}
+.services{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
+.svc{padding:24px 20px 26px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px;min-width:0}
+.svc + .svc{padding-left:20px;border-left:1px solid var(--line)}
+.svc:nth-child(3n+1){padding-left:0;border-left:0}
+.svc h3{font-size:1.75rem;font-weight:700}
+.svc p{color:var(--muted)}
+.svc .label{color:var(--ink)}
+
+/* process band */
+.band{background:var(--band);color:var(--band-fg)}
+.band .label{color:#9C9A93}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:36px;counter-reset:s}
+.step{border-top:3px solid var(--accent);padding-top:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.step::before{counter-increment:s;content:"Paso 0" counter(s);font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;color:var(--accent)}
+.step h3{font-size:1.6rem;font-weight:700}
+.step p{color:#B9B7B0;font-size:.98rem}
+
+/* quote form */
+.quote{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:start}
+.quote ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.quote li{display:flex;gap:10px}
+.quote li::before{content:"";flex:0 0 10px;height:10px;margin-top:8px;background:var(--accent)}
+form{background:var(--surface);border:2px solid var(--ink);padding:24px;display:grid;gap:16px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label.f{display:grid;gap:6px;font-weight:600;font-size:.95rem}
+input,select,textarea{font:inherit;font-weight:400;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:11px 12px;width:100%}
+textarea{min-height:90px;resize:vertical}
+.out{display:none;gap:10px;border-top:1px dashed var(--line);padding-top:14px}
+.out.show{display:grid}
+.out pre{white-space:pre-wrap;font-family:var(--mono);font-size:.8rem;background:var(--bg);padding:12px;margin:0;border:1px solid var(--line)}
+
+footer{padding-block:36px;border-top:2px solid var(--ink);font-size:.95rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 40px;justify-content:space-between}
+footer b{color:var(--ink)}
+
+/* chat */
+.fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:14px 20px 14px 16px;font:600 1rem var(--body);display:flex;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(0,0,0,.25);cursor:pointer}
+.fab .dot{width:10px;height:10px;border-radius:50%;background:var(--accent-ink);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.chat{position:fixed;z-index:40;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 110px));background:var(--surface);border:2px solid var(--ink);display:flex;flex-direction:column;box-shadow:0 18px 48px rgba(0,0,0,.3)}
+.chat-top{background:var(--band);color:var(--band-fg);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.chat-top b{font-family:var(--display);font-size:1.3rem;text-transform:uppercase;letter-spacing:.02em}
+.chat-top small{display:block;color:#9C9A93;font-size:.8rem}
+.chat-top button{background:none;border:0;color:var(--band-fg);font-size:1.6rem;line-height:1;cursor:pointer;padding:4px 8px}
+.msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:86%;padding:10px 13px;font-size:.96rem;line-height:1.45;white-space:pre-line}
+.m.bot{background:var(--bg);border:1px solid var(--line);align-self:flex-start}
+.m.me{background:var(--accent);color:var(--accent-ink);align-self:flex-end}
+.m.typing{color:var(--muted);font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 10px}
+.chips button{font:500 .85rem var(--body);background:transparent;border:1px solid var(--ink);color:var(--ink);padding:6px 10px;border-radius:999px;cursor:pointer}
+.chat form{border:0;border-top:1px solid var(--line);padding:10px;display:flex;gap:8px;background:var(--surface)}
+.chat form input{flex:1;min-width:0}
+.chat form button{flex:0 0 auto}
+
+@media (max-width:820px){
+  .hero-grid,.quote{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr}
+  .svc,.svc + .svc{padding:20px 0;border-left:0}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){
+  .steps,.row2{grid-template-columns:1fr}
+  header .btn{display:none}
+  .chat{right:0;bottom:0;width:100%;height:100%;border:0;padding-bottom:env(safe-area-inset-bottom,0px)}
+}
+@media (prefers-reduced-motion:reduce){.fab .dot{animation:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand"><i></i>Obra Firme</div>
+    <a class="btn sm" href="#cotizar">Cotizar gratis</a>
+  </div>
+</header>
+<div class="tape" aria-hidden="true"></div>
+
+<main>
+  <div class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="label">Construcción · Remodelación · Acabados</p>
+        <h1 style="margin-top:14px">Tu casa,<br>como la <span>imaginas</span></h1>
+        <p class="lead">Construimos desde cero, ampliamos y remodelamos cocinas, baños y fachadas. Presupuesto claro antes de empezar y obra entregada en la fecha acordada.</p>
+        <div class="cta">
+          <a class="btn solid" href="#cotizar">Pedir cotización</a>
+          <button class="btn" type="button" id="openChat2">Preguntar al asistente</button>
+        </div>
+      </div>
+      <div class="plan">
+        <span class="label">Plano · Recámara + baño</span>
+        <svg viewBox="0 0 300 200" role="img" aria-label="Plano de una recámara con baño">
+          <g fill="none" stroke="currentColor" stroke-width="5">
+            <path d="M20 20 H280 V180 H20 Z"/>
+            <path d="M190 20 V110 H280"/>
+          </g>
+          <g fill="none" stroke="currentColor" stroke-width="1.5" opacity=".6">
+            <path d="M190 80 A30 30 0 0 1 160 110" stroke-dasharray="3 3"/>
+            <rect x="215" y="40" width="40" height="24"/>
+            <rect x="40" y="60" width="80" height="60"/>
+          </g>
+          <g fill="none" stroke="var(--accent)" stroke-width="1.5">
+            <path d="M20 194 H280 M20 189 V199 M280 189 V199"/>
+          </g>
+          <g font-family="JetBrains Mono, monospace" font-size="10" fill="currentColor">
+            <text x="150" y="191" text-anchor="middle" fill="currentColor">6.50 m</text>
+            <text x="235" y="98" text-anchor="middle">BAÑO 2.4×2.2</text>
+            <text x="80" y="150" text-anchor="middle">RECÁMARA 4.0×4.0</text>
+          </g>
+        </svg>
+        <div class="facts">
+          <div><b>24 h</b><span class="label">Respuesta a cotización</span></div>
+          <div><b>0 $</b><span class="label">Visita y presupuesto</span></div>
+          <div><b>100%</b><span class="label">Precio por escrito</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap" id="servicios">
+    <div class="sec-head">
+      <h2>Lo que hacemos</h2>
+      <p>Un solo equipo para toda la obra: albañilería, instalaciones y acabados. Tú no coordinas a nadie.</p>
+    </div>
+    <div class="services">
+      <div class="svc"><span class="label">Obra nueva</span><h3>Construcción de casas</h3><p>Desde cimentación hasta entrega con acabados. Trabajamos con tu plano o te ayudamos a hacerlo.</p></div>
+      <div class="svc"><span class="label">Más espacio</span><h3>Ampliaciones</h3><p>Cuartos extra, segundo piso, cocheras y terrazas sobre tu construcción actual.</p></div>
+      <div class="svc"><span class="label">Interiores</span><h3>Cocinas y baños</h3><p>Cambio de piso y azulejo, muebles, tubería y conexiones nuevas.</p></div>
+      <div class="svc"><span class="label">Exterior</span><h3>Fachadas y bardas</h3><p>Aplanados, pintura, herrería y bardas perimetrales.</p></div>
+      <div class="svc"><span class="label">Protección</span><h3>Impermeabilización</h3><p>Losas y azoteas listas para temporada de lluvias y huracanes.</p></div>
+      <div class="svc"><span class="label">Detalles</span><h3>Pisos y acabados</h3><p>Porcelanato, loseta, tablaroca, plafones, pintura interior.</p></div>
+    </div>
+  </section>
+
+  <div class="band">
+    <section class="wrap">
+      <p class="label">Cómo trabajamos</p>
+      <h2 style="margin-top:10px">De la idea a la entrega</h2>
+      <div class="steps">
+        <div class="step"><h3>Visita</h3><p>Vamos a tu casa, medimos y escuchamos lo que quieres. Sin costo.</p></div>
+        <div class="step"><h3>Presupuesto</h3><p>Te entregamos el costo por escrito: material, mano de obra y tiempos.</p></div>
+        <div class="step"><h3>Obra</h3><p>Avances con fotos por WhatsApp. Pagas por etapa terminada.</p></div>
+        <div class="step"><h3>Entrega</h3><p>Revisamos juntos cada detalle y limpiamos antes de irnos.</p></div>
+      </div>
+    </section>
+  </div>
+
+  <section class="wrap" id="cotizar">
+    <div class="quote">
+      <div>
+        <p class="label">Cotización sin compromiso</p>
+        <h2 style="margin-top:10px">Cuéntanos tu proyecto</h2>
+        <ul>
+          <li>Llena el formulario y se arma tu mensaje para enviarlo por WhatsApp.</li>
+          <li>Si tienes fotos del lugar, mándalas en el mismo chat.</li>
+          <li>Te contestamos en menos de 24 horas.</li>
+        </ul>
+      </div>
+      <form id="qform">
+        <div class="row2">
+          <label class="f">Nombre<input id="q-name" required placeholder="Ej. Laura Pérez"></label>
+          <label class="f">Colonia o zona<input id="q-zone" placeholder="Ej. Centro"></label>
+        </div>
+        <label class="f">¿Qué necesitas?
+          <select id="q-type">
+            <option>Remodelación de cocina</option>
+            <option>Remodelación de baño</option>
+            <option>Ampliación / cuarto extra</option>
+            <option>Construcción de casa</option>
+            <option>Impermeabilización</option>
+            <option>Fachada o barda</option>
+            <option>Otro</option>
+          </select>
+        </label>
+        <label class="f">Medidas aproximadas (m²)<input id="q-m2" inputmode="decimal" placeholder="Ej. 12"></label>
+        <label class="f">Detalles<textarea id="q-msg" placeholder="Ej. Quiero cambiar azulejo y regadera del baño principal"></textarea></label>
+        <button class="btn solid" type="submit">Preparar mensaje de WhatsApp</button>
+        <div class="out" id="qout">
+          <span class="label">Tu mensaje</span>
+          <pre id="qtext"></pre>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <a class="btn solid sm" id="qwa" target="_blank" rel="noopener">Abrir WhatsApp</a>
+            <button class="btn sm" type="button" id="qcopy">Copiar mensaje</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Obra Firme</b><br>Construcción y remodelación</div>
+    <div><b>WhatsApp</b><br><span id="phoneTxt">983 000 0000</span></div>
+    <div><b>Horario</b><br>Lun a Sáb · 8:00 a 18:00</div>
+  </div>
+</footer>
+
+<button class="fab" id="fab" type="button" aria-label="Abrir asistente"><span class="dot"></span>¿Dudas? Pregúntame</button>
+
+<div class="chat" id="chat" hidden role="dialog" aria-label="Asistente virtual">
+  <div class="chat-top">
+    <div><b>Asistente Obra Firme</b><small>Responde al instante</small></div>
+    <button type="button" id="closeChat" aria-label="Cerrar">×</button>
+  </div>
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+  <div class="chips" id="chips"></div>
+  <form id="cform">
+    <input id="cinput" autocomplete="off" placeholder="Escribe tu pregunta…">
+    <button class="btn solid sm" type="submit">Enviar</button>
+  </form>
+</div>
+
+<script>
+const PHONE = "529830000000"; // número de WhatsApp del negocio (52 + 10 dígitos)
+const $ = id => document.getElementById(id);
+
+/* ---------- Asistente ---------- */
+const KB = [
+  {k:["precio","cuesta","costo","cobran","cuanto","presupuesto","cotiza"],
+   a:"Cada obra es distinta, por eso damos el precio después de una visita gratuita. Para darte una idea rápida dime qué quieres hacer y cuántos m² mide el espacio.\n\nTambién puedes llenar el formulario de cotización y te contestamos en menos de 24 h."},
+  {k:["horario","hora","abren","atienden","dias"],
+   a:"Atendemos de lunes a sábado de 8:00 a 18:00. Por WhatsApp puedes escribir a cualquier hora y te respondemos en cuanto abrimos."},
+  {k:["visita","medir","ir a mi casa","revisar"],
+   a:"La visita es gratis. Vamos, medimos, vemos el estado del lugar y te entregamos el presupuesto por escrito. ¿Te agendo una? Escríbenos por WhatsApp con tu colonia y el día que te acomoda."},
+  {k:["tiempo","tardan","dura","semanas","cuando terminan"],
+   a:"Depende del trabajo. Un baño suele llevar de 1 a 2 semanas, una cocina de 2 a 4 y una ampliación de un cuarto alrededor de 1 a 2 meses. En el presupuesto te damos fechas por etapa."},
+  {k:["pago","pagar","anticipo","tarjeta","transferencia","credito","infonavit"],
+   a:"Trabajamos por etapas: un anticipo para material al iniciar y el resto conforme se termina cada etapa. Aceptamos efectivo y transferencia. Si usas un crédito de vivienda, platícanos y vemos cómo acomodarlo."},
+  {k:["cocina"], a:"Remodelamos cocinas completas: piso, azulejo, cubierta, muebles, tubería e instalación eléctrica. ¿Más o menos cuántos metros mide tu cocina?"},
+  {k:["baño","bano","regadera","azulejo"], a:"En baños cambiamos azulejo, piso, regadera, WC, lavabo y tubería. Si nos mandas una foto por WhatsApp te damos un estimado más rápido."},
+  {k:["ampli","cuarto","segundo piso","recamara","cochera","terraza"], a:"Hacemos cuartos extra, segundos pisos, cocheras y terrazas. Antes revisamos que la estructura actual aguante la carga. ¿Qué te gustaría agregar?"},
+  {k:["casa","construir","obra nueva","terreno","cimentacion"], a:"Construimos casas desde la cimentación hasta los acabados. Si ya tienes plano lo usamos; si no, te ayudamos a definir la distribución."},
+  {k:["impermeab","gotera","filtra","humedad","techo","losa"], a:"Impermeabilizamos losas y azoteas. Lo ideal es hacerlo antes de lluvias. Si ya tienes goteras, primero revisamos de dónde viene el agua."},
+  {k:["material","marca","cemento"], a:"Usamos material de buena calidad y en el presupuesto te decimos exactamente qué se va a usar. Si tú prefieres comprar el material, también podemos cotizar solo mano de obra."},
+  {k:["garantia","falla","queda mal"], a:"Te damos garantía por escrito en el trabajo realizado. Si algo falla por mano de obra, regresamos a corregirlo sin costo."},
+  {k:["donde","zona","ubicacion","ciudad","colonia","lejos"], a:"Trabajamos en la ciudad y alrededores. Dime tu colonia y te confirmo si llegamos."},
+  {k:["whatsapp","telefono","numero","contacto","llamar","hablar"], a:"Nuestro WhatsApp es 983 000 0000. Ahí puedes mandar fotos de tu espacio y agendar la visita."},
+  {k:["hola","buenas","buen dia","que tal"], a:"¡Hola! Soy el asistente de Obra Firme. ¿Qué te gustaría construir o remodelar?"},
+  {k:["gracias"], a:"¡Con gusto! Cuando quieras, escríbenos por WhatsApp para agendar tu visita gratis."}
+];
+const FALLBACK = "Esa pregunta mejor te la responde directamente el encargado. Escríbenos por WhatsApp al 983 000 0000 y te contestamos en menos de 24 h.";
+const CHIPS = ["¿Cuánto cuesta?","¿La visita es gratis?","¿Cuánto tardan?","Formas de pago","Remodelar baño"];
+
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+function answer(q){
+  const t = norm(q); let best=null, score=0;
+  for(const item of KB){
+    const s = item.k.reduce((n,k)=> n + (t.includes(norm(k))?1:0),0);
+    if(s>score){score=s;best=item}
+  }
+  return best ? best.a : FALLBACK;
+}
+function add(text, who){
+  const d=document.createElement("div"); d.className="m "+who; d.textContent=text;
+  $("msgs").appendChild(d); $("msgs").scrollTop=$("msgs").scrollHeight; return d;
+}
+function ask(q){
+  if(!q.trim()) return;
+  add(q,"me");
+  const t=add("Escribiendo…","bot typing");
+  setTimeout(()=>{t.textContent=answer(q);t.classList.remove("typing")},650);
+}
+CHIPS.forEach(c=>{const b=document.createElement("button");b.type="button";b.textContent=c;b.onclick=()=>ask(c);$("chips").appendChild(b)});
+add("¡Hola! Soy el asistente de Obra Firme. Pregúntame sobre precios, tiempos, visitas o cualquier trabajo de construcción o remodelación.","bot");
+
+function openChat(){ $("chat").hidden=false; $("fab").hidden=true; $("cinput").focus() }
+$("fab").onclick=openChat; $("openChat2").onclick=openChat;
+$("closeChat").onclick=()=>{ $("chat").hidden=true; $("fab").hidden=false };
+$("cform").addEventListener("submit",e=>{e.preventDefault(); ask($("cinput").value); $("cinput").value=""});
+
+/* ---------- Formulario de cotización ---------- */
+$("qform").addEventListener("submit",e=>{
+  e.preventDefault();
+  const m2=$("q-m2").value.trim(), z=$("q-zone").value.trim(), d=$("q-msg").value.trim();
+  const txt = `Hola, soy ${$("q-name").value.trim()}. Quiero cotizar: ${$("q-type").value}.`
+    + (m2?`\nMedidas aprox.: ${m2} m²`:"") + (z?`\nZona: ${z}`:"") + (d?`\nDetalles: ${d}`:"");
+  $("qtext").textContent=txt;
+  $("qwa").href=`https://wa.me/${PHONE}?text=${encodeURIComponent(txt)}`;
+  $("qout").classList.add("show");
+});
+$("qcopy").addEventListener("click",()=>{
+  const txt=$("qtext").textContent;
+  navigator.clipboard.writeText(txt).then(()=>{$("qcopy").textContent="Copiado"}).catch(()=>{
+    const r=document.createRange(); r.selectNodeContents($("qtext"));
+    const s=getSelection(); s.removeAllRanges(); s.addRange(r);
+  });
+});
+</script>
+
+</body>
+</html>
